@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MortgageDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="EmailId" Type="varchar" MaxLength="70" />
+    <Property Name="Password" Type="varchar(max)" />
+    <Property Name="PhoneNo" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Role" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="EnquiryTable">
+    <Key>
+      <PropertyRef Name="EnquiryId" />
+    </Key>
+    <Property Name="EnquiryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailId" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="PhoneNo" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="PropertyType" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Message" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LoanForm">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="EmailId" Type="varchar" MaxLength="70" />
+    <Property Name="PhoneNo" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Address" Type="varchar" MaxLength="200" />
+    <Property Name="Salary" Type="money" />
+    <Property Name="PropertyType" Type="varchar" MaxLength="30" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="ImageUrl" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="20" />
+    <Property Name="InspectorId" Type="int" />
+  </EntityType>
+  <EntityType Name="StatusTrack">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicationId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="AuthorityId" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Status" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="UserRegister">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="50" />
+    <Property Name="EmailId" Type="varchar" MaxLength="70" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="Password" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK__LoanForm__Inspec__164452B1">
+    <End Role="AdminDetail" Type="Self.AdminDetail" Multiplicity="0..1" />
+    <End Role="LoanForm" Type="Self.LoanForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdminDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LoanForm">
+        <PropertyRef Name="InspectorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StatusTra__Appli__1920BF5C">
+    <End Role="LoanForm" Type="Self.LoanForm" Multiplicity="0..1" />
+    <End Role="StatusTrack" Type="Self.StatusTrack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoanForm">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="StatusTrack">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StatusTra__Autho__1B0907CE">
+    <End Role="AdminDetail" Type="Self.AdminDetail" Multiplicity="0..1" />
+    <End Role="StatusTrack" Type="Self.StatusTrack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdminDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StatusTrack">
+        <PropertyRef Name="AuthorityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StatusTra__UserI__1A14E395">
+    <End Role="UserRegister" Type="Self.UserRegister" Multiplicity="0..1" />
+    <End Role="StatusTrack" Type="Self.StatusTrack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRegister">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="StatusTrack">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MortgageDbModelStoreContainer">
+    <EntitySet Name="AdminDetail" EntityType="Self.AdminDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnquiryTable" EntityType="Self.EnquiryTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoanForm" EntityType="Self.LoanForm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatusTrack" EntityType="Self.StatusTrack" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRegister" EntityType="Self.UserRegister" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__LoanForm__Inspec__164452B1" Association="Self.FK__LoanForm__Inspec__164452B1">
+      <End Role="AdminDetail" EntitySet="AdminDetail" />
+      <End Role="LoanForm" EntitySet="LoanForm" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StatusTra__Appli__1920BF5C" Association="Self.FK__StatusTra__Appli__1920BF5C">
+      <End Role="LoanForm" EntitySet="LoanForm" />
+      <End Role="StatusTrack" EntitySet="StatusTrack" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StatusTra__Autho__1B0907CE" Association="Self.FK__StatusTra__Autho__1B0907CE">
+      <End Role="AdminDetail" EntitySet="AdminDetail" />
+      <End Role="StatusTrack" EntitySet="StatusTrack" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StatusTra__UserI__1A14E395" Association="Self.FK__StatusTra__UserI__1A14E395">
+      <End Role="UserRegister" EntitySet="UserRegister" />
+      <End Role="StatusTrack" EntitySet="StatusTrack" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
