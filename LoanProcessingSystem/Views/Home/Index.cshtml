@@ -3,7 +3,33 @@
 }
 @Styles.Render("~/Content/Site.css")
 
+<style>
+    .card{
+        margin:40px;
+        margin-top:0px;
+        padding:40px;
+        border-radius:10px;
+    }
+    .card-header{
+        color:#ec8b00;
+        font-size:36px;
+        font-weight:400;
+        padding:4px;
+    }
+    .card-title {
+        color: #ec8b00;
+        font-size: 24px;
+        padding-left:4px;
+    }
+    .card-text{
+        color:#943b7e;
+        font-size:20px;
+    }
 
+
+
+
+</style>
 
 
 
@@ -21,7 +47,7 @@
         <div class="item active">
             <img src="~/Images/image6.png" alt="firstImage" style=" width:100%;height:500px;">
             <div class="carousel-caption">
-                <h2 class="animated fadeInRight" style="font-size:80px; letter-spacing:1rem;">Easy</h2>
+                <h2 class="animated fadeInRight" style="font-size:100px; letter-spacing:1rem;">Easy</h2>
                 <p class="animated fadeInRight" style="font-size:18px;">Streamline all phases of the loan process to close more loans, faster!</p>
                 <p class="animated fadeInUp"><a href="../Home/Plans" class="btn btn-transparent btn-rounded btn-large">Learn More</a></p>
             </div>
@@ -30,7 +56,7 @@
         <div class="item">
             <img src="~/Images/m3.png" alt="SecondImage" style="width:100%;height:500px;">
             <div class="carousel-caption">
-                <h2 class="animated fadeInRight" style="font-size:80px; letter-spacing:1rem;">Accurate</h2>
+                <h2 class="animated fadeInRight" style="font-size:100px; letter-spacing:1rem;">Accurate</h2>
                 <p class="animated fadeInRight" style="font-size:18px;">Mortgages are complicated. Mortgage software shouldn't be. </p>
                 <p class="animated fadeInUp"><a href="../Home/Plans" class="btn btn-transparent btn-rounded btn-large">Learn More</a></p>
             </div>
@@ -39,7 +65,7 @@
         <div class="item">
             <img src="~/Images/me2.png" alt="ThirdImage" style="width:100%;height:500px;">
             <div class="carousel-caption">
-                <h2 class="animated fadeInDown" style="font-size:80px; letter-spacing:1rem;">Efficient</h2>
+                <h2 class="animated fadeInDown" style="font-size:100px; letter-spacing:1rem;">Efficient</h2>
                 <p class="animated fadeInRight" style="font-size:18px;">Complex process, meet streamlined solution.</p>
                 <p class="animated fadeInUp"><a href="../Home/Plans" class="btn btn-transparent btn-rounded btn-large">Learn More</a></p>
             </div>
@@ -108,19 +134,22 @@
 
         </div>
     </div>
-
     <div class="col-xs-12 col-sm-6 col-md-4" style="padding: 3%">
-        <div class="roundcard" style="box-shadow: 0px 7px 40px #efefef;height:40vh;">
-            <h1 style="font-size:60px; color:#ec8b00; text-align:center; margin-left:5%; margin-top:10%;"><i class="fa fa-bar-chart" aria-hidden="true"></i></h1>
+        <div class="roundcard" style="box-shadow: 0px 7px 40px #efefef; height:40vh;">
+            <h1 class="glyphicon glyphicon-equalizer" style="font-size:60px; color:#ec8b00; text-align:center; margin-left:42%; margin-top:10%;"></h1>
             <h3 class="cardtitle" style="color:#953a80; margin-bottom:10px;padding:20px;">Tap Into Our Expertise</h3>
 
         </div>
     </div>
 
+
+
     <div class="col-xs-12 col-sm-6 col-md-4" style="padding: 3%">
         <div class="roundcard" style="box-shadow: 0px 7px 40px #efefef;height:40vh;">
             <h1 class="glyphicon glyphicon-tasks" style="font-size:60px; color:#ec8b00; text-align:center; margin-left:42%; margin-top:10%;"></h1>
             <h3 class="cardtitle" style="color:#953a80;margin-bottom:10px;padding:20px;">Get Reliable Results</h3>
+
+
 
         </div>
     </div>
@@ -130,7 +159,7 @@
 <div class="bottomroom"></div>
 
 
-<div class="roundcard" style=" height:auto; width:1200px;padding:20px; border-radius:10px;margin-bottom:20px;  box-shadow: 0px 7px 40px #efefef;">
+@*<div class="card" style=" height:auto; width:1200px;padding:20px; border-radius:10px;margin-bottom:20px;  box-shadow: 0px 7px 40px #efefef;">
     <h2 class="Enq" style="text-align:center;font-size:40px; color:#ec8b00;">
         Technology designed for you<br />
     </h2>
@@ -144,6 +173,115 @@
             <h1 style="color:#943b7e">Join thousands of mortgage professionals using the industry’s most reliable loan origination software</h1>
             <h1 style="color:#943b7e">Join thousands of mortgage professionals using the industry’s most reliable loan origination software</h1>
         </div>
+    </div>
+</div>*@
+
+<div class="container" style="margin-bottom:40px;">
+    <div class="row">
+        <div class=' col-md-12 text-left' style="color:#ec8b00;padding:10px;margin-bottom:5px;">
+            <h2>What's Our people said about us</h2>
+        </div>
+    </div>
+    <div class='row'>
+        <div class=' col-md-10'>
+            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                <!-- Bottom Carousel Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#quote-carousel" data-slide-to="1"></li>
+                    <li data-target="#quote-carousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Carousel Slides / Quotes -->
+                <div class="carousel-inner">
+
+                    <!-- Quote 1 -->
+                    <div class="item active">
+                        <blockquote>
+                            <div class="row">
+                                <div class="col-sm-3 text-center">
+                                    <img class="img-circle" src="https://randomuser.me/api/portraits/men/86.jpg" style="width: 100px;height:100px;">
+                                    <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">-->
+                                </div>
+                                <div class="col-sm-9">
+                                    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
+                                    <small>Someone famous</small>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                    <!-- Quote 2 -->
+                    <div class="item">
+                        <blockquote>
+                            <div class="row">
+                                <div class="col-sm-3 text-center">
+                                    <img class="img-circle" src="https://randomuser.me/api/portraits/women/17.jpg" style="width: 100px;height:100px;">
+                                </div>
+                                <div class="col-sm-9">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris.</p>
+                                    <small>Someone famous</small>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                    <!-- Quote 3 -->
+                    <div class="item">
+                        <blockquote>
+                            <div class="row">
+                                <div class="col-sm-3 text-center">
+                                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/keizgoesboom/128.jpg" style="width: 100px;height:100px;">
+                                </div>
+                                <div class="col-sm-9">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</p>
+                                    <small>Someone famous</small>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Carousel Buttons Next/Prev -->
+                <!--<a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // When the DOM is ready, run this function
+    $(document).ready(function () {
+        //Set the carousel options
+        $('#quote-carousel').carousel({
+            pause: true,
+            interval: 4000,
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="card" style="background:#f5f5f5;">
+    <div class="card-header">
+        Designed for you
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Let's Jump into era.</h5>
+        <p class="card-text">
+            A mortgage loan is one in which you secure funds by pledging your property. The interest rates on mortgage loans range from 8.15% to 11.80% p.a. Usually, the amount of funding you can avail will be up to 60% of the registered value of the property. Some banks also offer mortgage loans up to Rs.10 crore.
+            The repayment tenure for mortgage loans can be up to 15 years.
+        </p>
+     
     </div>
 </div>
 

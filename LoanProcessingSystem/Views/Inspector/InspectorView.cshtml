@@ -6,7 +6,9 @@
 }
 
 @Styles.Render("~/Content/Adminstyle.css")
-@Html.Partial("Sidemenu")
+
+@Html.Partial("sideinspector")
+
 
 <style>
     .table {
@@ -18,6 +20,8 @@
         font-size: 28px;
         font-weight: 400;
         color: #ec8b00;
+        margin-top: 6%;
+        margin-left: 18%;
     }
 
     tr {
@@ -44,11 +48,9 @@
 </style>
 
 
-<h1 style="margin-left:18%;margin-top:6%;"> Loan Form </h1>
-<a href="#" class="btn btn-primary">Save Report</a>
+<h1>Loan Forms Tasks</h1>
 
 <table class="table">
-
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -77,17 +79,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AdminDetail.Name)
-        </th>
-        <th></th>
+
         <th></th>
     </tr>
 
-
     @foreach (var item in Model)
     {
-
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -116,35 +113,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AdminDetail.Name)
-            </td>
+
             <td>
 
 
-                <a href="@Url.Action("Edit", new { id = item.ApplicationId })" class="btn btn-primary">Add Inspector</a>
 
-                @*<a href="@Url.Action("Delete", new { id = item.ApplicationId })" class="btn btn-danger">Reject Application</a>*@
+                <a href="@Url.Action("Details",new { id = item.ApplicationId })" class="btn btn-info">Review Details</a>
 
-
-            </td>
-            <td>
-
-
-                @*<a href="@Url.Action("Edit", new { id = item.ApplicationId })" class="btn btn-primary">Add Inspector</a>*@
-
-                <a href="@Url.Action("Delete", new { id = item.ApplicationId })" class="btn btn-danger">Reject Application</a>
+                <a href="@Url.Action("","", new { id = item.ApplicationId })" class="btn btn-success">Submit Report</a>
 
 
             </td>
         </tr>
     }
 
-    @*@RenderPage("~/Views/Enquiry/IndexPartial.cshtml");*@
-
 </table>
-@*<div class="panel panel-body">
-        <div class="col-md-4">
-            <a href="@Url.Action("Index","Enquiry", new { id = 123 })" class="btn btn-warning">View Customer enquiry</a>
-        </div>
-    </div>*@

@@ -21,6 +21,11 @@ namespace LoanProcessingSystem.Controllers.User
             return View(loanForms.ToList());
         }
 
+        public ActionResult Success()
+        {
+            return View();
+        }
+
         // GET: LoanForms/Details/5
         public ActionResult Details(int? id)
         {
@@ -55,7 +60,7 @@ namespace LoanProcessingSystem.Controllers.User
                 loanForm.Status = "Active";
                 db.LoanForms.Add(loanForm);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Success");
             }
 
             ViewBag.InspectorId = new SelectList(db.AdminDetails, "Id", "Name", loanForm.InspectorId);
@@ -151,7 +156,7 @@ namespace LoanProcessingSystem.Controllers.User
                 db.SaveChanges();
 
             }
-            return RedirectToAction("../LoanForms/Index/");
+            return RedirectToAction("../LoanForms/Success/");
         }
     }
 }

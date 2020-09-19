@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+}
+
+<style>
+    .card{
+        width:800px;
+        height:200px;
+        border-radius:10px;
+        margin:200px;
+        left:60%;
+        top:50%;
+
+    }
+    .Backlink{
+        text-align:center;
+    }
+    .card-header {
+        text-align: center;
+        color: #ec8b00;
+    }
+    .card-title{
+        text-align:center;
+    }
+    .fa-check-circle {
+        color: #ec8b00;
+        align-items: center;
+        font-size: 36px;
+        margin-left: 48%;
+    }
+    .card-text{
+        align-items:center;
+        margin-left:44%;
+        justify-content:center;
+    }
+</style>
+
+
+
+
+<div class="card" style="background:#f5f5f5;">
+    <div class="card-header">
+       <h1>Hello @Session["EmailId"]</h1>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">You have Successfully Submit your Loan Form!!</h5><br/>
+        <span><i class="fa fa-check-circle"  aria-hidden="true"></i></span><br/><br/>
+        <p class="card-text">
+            @Html.ActionLink("Back to Home", "Index", "Home")
+        </p>
+
+    </div>
+
+</div>
+
+

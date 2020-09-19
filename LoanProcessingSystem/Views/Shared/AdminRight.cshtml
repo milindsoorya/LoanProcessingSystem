@@ -1,0 +1,27 @@
+﻿<style>
+    .navbar-right li{
+        color:#fff;
+    }
+    .navbar-inverse .navbar-nav > li > a{
+        color:#fff;
+    }
+</style>
+@if ( @Session["Id"] != null)
+{
+    using (Html.BeginForm("Logout", "AdminCredentialLogin", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+        
+            @*<li><a href="#">Welcome : @Html.Display("Name") </a> </li>*@
+           
+            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right" >
+        <li style="color:#fff;"><i class="fa fa-sign-in" aria-hidden="true"></i>@Html.ActionLink("Login", "AdminSectionLogIn", "", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

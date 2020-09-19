@@ -1,39 +1,14 @@
 ﻿@model LoanProcessingSystem.Models.LoanForm
 
 @{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewBag.Title = "Details";
 }
 
-@Styles.Render("~/Content/Adminstyle.css")
-@Html.Partial("Sidemenu")
+<h2>Details</h2>
 
-<style>
-    h1 {
-        margin-left: 28%;
-        margin-top: 8%;
-        color: #ecb800;
-        margin-bottom: 2%;
-    }
-
-    .dl-horizontal {
-        align-content: center;
-        text-align: left;
-        margin-left: 18%;
-    }
-
-    dt {
-        padding: 2px;
-    }
-
-    dd {
-        padding: 2px;
-    }
-</style>
-<h1>Are you sure you want to delete this application?</h1>
 <div>
-
-    <br />
+    <h4>LoanForm</h4>
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -116,16 +91,8 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-     
-
-            <input type="submit" value="Delete" class="btn btn-danger" style=" margin-left: 32%;  color: #fff;" />
-        </div>
-        <br />
-    }
 </div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ApplicationId }) |*@
+    <a href="@Url.Action("InspectorView", "Inspector")" class="btn btn-primary">Back to List</a>
+</p>
