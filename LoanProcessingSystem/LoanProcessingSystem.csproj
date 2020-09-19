@@ -130,8 +130,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin\AdminCredentialLoginController.cs" />
     <Compile Include="Controllers\Admin\EnquiryController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Admin\StatusTracksController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Inspector\InspectorController.cs" />
     <Compile Include="Controllers\User\LoanFormsController.cs" />
     <Compile Include="Controllers\User\RegisterLoginController.cs" />
@@ -262,12 +262,16 @@
     <Content Include="Views\Shared\Sidemenu.cshtml" />
     <Content Include="Views\Inspector\InspectorPanel.cshtml" />
     <Content Include="Views\Shared\sideinspector.cshtml" />
+    <Content Include="Views\StatusTracks\Create.cshtml" />
+    <Content Include="Views\StatusTracks\Delete.cshtml" />
+    <Content Include="Views\StatusTracks\Details.cshtml" />
+    <Content Include="Views\StatusTracks\Edit.cshtml" />
+    <Content Include="Views\StatusTracks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="Pics\" />
-    <Folder Include="Views\StatusTracks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

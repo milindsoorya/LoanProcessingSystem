@@ -1,0 +1,90 @@
+﻿@model LoanProcessingSystem.Models.StatusTrack
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@Styles.Render("~/Content/Adminstyle.css")
+@Html.Partial("Sidemenu")
+
+<style>
+    h1 {
+        margin-left: 28%;
+        margin-top: 8%;
+        color: #ecb800;
+        margin-bottom: 2%;
+    }
+
+    .dl-horizontal {
+        align-content: center;
+        text-align: left;
+        margin-left: 18%;
+    }
+
+    dt {
+        padding: 2px;
+    }
+
+    dd {
+        padding: 2px;
+    }
+</style>
+
+
+
+<h1>Details</h1>
+
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminDetail.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminDetail.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanForm.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanForm.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserRegister.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserRegister.FullName)
+        </dd>
+
+    </dl>
+</div>
+<p style="margin-left:30%;">
+   
+    @Html.ActionLink("Back to List", "Index")
+</p>

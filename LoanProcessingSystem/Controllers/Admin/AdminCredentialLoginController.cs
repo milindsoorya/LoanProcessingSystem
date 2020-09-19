@@ -41,7 +41,7 @@ namespace LoanProcessingSystem.Controllers.Admin
                         else if (v.Role == "Inspector")
                         {
                             Session["id"] = v.Id;
-                            return RedirectToAction("InspectorView", "Inspector");
+                            return RedirectToAction("InspectorPanel", "Inspector");
                         }
                     }
                     else
@@ -61,9 +61,9 @@ namespace LoanProcessingSystem.Controllers.Admin
         }
         public ActionResult Logout()
         {
-            string Id = (string)Session["Id"];
+            int Id = (int)Session["Id"];
             Session.Abandon();
-            return RedirectToAction("LogIn", "LoginRegister");
+            return RedirectToAction("AdminSectionLogIn", "AdminCredentialLogin");
         }
     }
 }

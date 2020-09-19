@@ -19,6 +19,10 @@ namespace LoanProcessingSystem.Controllers
         {
             return View();
         }
+        public ActionResult InspectorPanel()
+        {
+            return View();
+        }
 
         public ActionResult InspectorView()
         {
