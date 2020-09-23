@@ -129,8 +129,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin\AdminCredentialLoginController.cs" />
+    <Compile Include="Controllers\Admin\AfterInspectionController.cs" />
     <Compile Include="Controllers\Admin\EnquiryController.cs" />
+    <Compile Include="Controllers\Admin\StatusTracksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Inspector\InspectorController.cs" />
     <Compile Include="Controllers\User\LoanFormsController.cs" />
     <Compile Include="Controllers\User\RegisterLoginController.cs" />
     <Compile Include="Crypto.cs" />
@@ -138,41 +141,48 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminDetail.cs">
-      <DependentUpon>LoanProcessingSystem.tt</DependentUpon>
+      <DependentUpon>LoanProcessingSystemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminLogin.cs" />
     <Compile Include="Models\EnquiryTable.cs">
-      <DependentUpon>LoanProcessingSystem.tt</DependentUpon>
+      <DependentUpon>LoanProcessingSystemModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Extended\EnquiryTable.cs" />
+    <Compile Include="Models\Extended\LoanForm.cs" />
+    <Compile Include="Models\Extended\StatusTrack.cs" />
     <Compile Include="Models\Extended\UserRegister.cs" />
     <Compile Include="Models\LoanForm.cs">
-      <DependentUpon>LoanProcessingSystem.tt</DependentUpon>
+      <DependentUpon>LoanProcessingSystemModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoanProcessingSystem.Context.cs">
+    <Compile Include="Models\LoanProcessingSystemModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LoanProcessingSystem.Context.tt</DependentUpon>
+      <DependentUpon>LoanProcessingSystemModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoanProcessingSystem.cs">
+    <Compile Include="Models\LoanProcessingSystemModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LoanProcessingSystem.tt</DependentUpon>
+      <DependentUpon>LoanProcessingSystemModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoanProcessingSystem.Designer.cs">
+    <Compile Include="Models\LoanProcessingSystemModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LoanProcessingSystem.edmx</DependentUpon>
+      <DependentUpon>LoanProcessingSystemModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\StatusTrack.cs">
-      <DependentUpon>LoanProcessingSystem.tt</DependentUpon>
+      <DependentUpon>LoanProcessingSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>LoanProcessingSystemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs">
-      <DependentUpon>LoanProcessingSystem.tt</DependentUpon>
+      <DependentUpon>LoanProcessingSystemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Adminstyle.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -185,15 +195,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\LoanProcessingSystem.Context.tt">
+    <Content Include="Models\LoanProcessingSystemModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LoanProcessingSystem.edmx</DependentUpon>
-      <LastGenOutput>LoanProcessingSystem.Context.cs</LastGenOutput>
+      <DependentUpon>LoanProcessingSystemModel.edmx</DependentUpon>
+      <LastGenOutput>LoanProcessingSystemModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\LoanProcessingSystem.tt">
+    <Content Include="Models\LoanProcessingSystemModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LoanProcessingSystem.edmx</DependentUpon>
-      <LastGenOutput>LoanProcessingSystem.cs</LastGenOutput>
+      <DependentUpon>LoanProcessingSystemModel.edmx</DependentUpon>
+      <LastGenOutput>LoanProcessingSystemModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -202,12 +212,13 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <EntityDeploy Include="Models\LoanProcessingSystem.edmx">
+    <Content Include="Views\Shared\AdminLayout.cshtml" />
+    <EntityDeploy Include="Models\LoanProcessingSystemModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LoanProcessingSystem.Designer.cs</LastGenOutput>
+      <LastGenOutput>LoanProcessingSystemModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\LoanProcessingSystem.edmx.diagram">
-      <DependentUpon>LoanProcessingSystem.edmx</DependentUpon>
+    <Content Include="Models\LoanProcessingSystemModel.edmx.diagram">
+      <DependentUpon>LoanProcessingSystemModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -250,6 +261,21 @@
     <Content Include="Views\Shared\RightNav.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Home\Plans.cshtml" />
+    <Content Include="Views\Inspector\Details.cshtml" />
+    <Content Include="Views\Inspector\InspectorView.cshtml" />
+    <Content Include="Views\AdminCredentialLogin\AdminPanel.cshtml" />
+    <Content Include="Views\LoanForms\Success.cshtml" />
+    <Content Include="Views\Shared\AdminRight.cshtml" />
+    <Content Include="Views\Shared\Sidemenu.cshtml" />
+    <Content Include="Views\Inspector\InspectorPanel.cshtml" />
+    <Content Include="Views\Shared\sideinspector.cshtml" />
+    <Content Include="Views\StatusTracks\Create.cshtml" />
+    <Content Include="Views\StatusTracks\Delete.cshtml" />
+    <Content Include="Views\StatusTracks\Details.cshtml" />
+    <Content Include="Views\StatusTracks\Edit.cshtml" />
+    <Content Include="Views\StatusTracks\Index.cshtml" />
+    <Content Include="Views\AfterInspection\AfterInspection.cshtml" />
+    <Content Include="Views\Enquiry\enq_success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

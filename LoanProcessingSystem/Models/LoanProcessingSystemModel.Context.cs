@@ -29,6 +29,7 @@ namespace LoanProcessingSystem.Models
         public virtual DbSet<EnquiryTable> EnquiryTables { get; set; }
         public virtual DbSet<LoanForm> LoanForms { get; set; }
         public virtual DbSet<StatusTrack> StatusTracks { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UserRegister> UserRegisters { get; set; }
     }
 }

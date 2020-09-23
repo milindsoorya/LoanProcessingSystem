@@ -100,8 +100,8 @@ p {
     .flexborder::-webkit-scrollbar {
         display: none;
     }
-
-/*.roundcard:hover{
+/*
+.roundcard{
     height: 50vh;
     width: 100%;
     background-color: #fff;
@@ -116,7 +116,7 @@ p {
     right: 0;
 }*/
 
-.roundcard {
+.card {
     height: 40vh;
     width: 100%;
     background-color: #fff;
@@ -322,49 +322,6 @@ p {
 
 
 
-
-/* 
-Extra small devices (portrait phones, less than 544px) 
-No media query since this is the default in Bootstrap because it is "mobile first"
-*/
-h1 {
-    font-size: 1rem;
-}
-/*1rem = 16px*/
-/*
-####################################################
-M E D I A  Q U E R I E S
-####################################################
-*/
-
-/*
-::::::::::::::::::::::::::::::::::::::::::::::::::::
-Bootstrap 4 breakpoints
-*/
-/* Small devices (landscape phones, 544px and up) */
-@media (min-width: 544px) {
-    h1 {
-        font-size: 1.5rem;
-    }
-    /*1rem = 16px*/
-}
-
-/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
-@media (min-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-    /*1rem = 16px*/
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-    /*1rem = 16px*/
-}
-
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
     h1 {
@@ -372,11 +329,6 @@ Bootstrap 4 breakpoints
     }
     /*1rem = 16px*/
 }
-
-/*
-::::::::::::::::::::::::::::::::::::::::::::::::::::
-Custom media queries
-*/
 
 /* Set width to make card deck cards 100% width */
 @media (min-width: 950px) and (max-width:1100px) {
@@ -415,4 +367,125 @@ Custom media queries
     body {
         margin-top: 4rem;
     }
+}
+/*
+
+@media only screen and (max-width: 900px) {
+
+    .card {
+        height: auto;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 3%;
+        box-shadow: 0px 7px 40px #efefef;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+
+    .enq{
+        text-align:left;
+    }
+}*/
+
+
+
+
+/* carousel */
+#quote-carousel {
+    padding: 0 10px 30px 10px;
+    margin-top: 30px;
+}
+
+    /* Control buttons  */
+    #quote-carousel .carousel-control {
+        background: none;
+        color: #222;
+        font-size: 2.3em;
+        text-shadow: none;
+        margin-top: 30px;
+    }
+        /* Previous button  */
+        #quote-carousel .carousel-control.left {
+            left: -12px;
+        }
+        /* Next button  */
+        #quote-carousel .carousel-control.right {
+            right: -12px !important;
+        }
+    /* Changes the position of the indicators */
+    #quote-carousel .carousel-indicators {
+        right: 50%;
+        top: auto;
+        bottom: 0px;
+        margin-right: -19px;
+    }
+        /* Changes the color of the indicators */
+        #quote-carousel .carousel-indicators li {
+            background: #c0c0c0;
+        }
+
+        #quote-carousel .carousel-indicators .active {
+            background: #333333;
+        }
+
+    #quote-carousel img {
+        width: 250px;
+        height: 100px
+    }
+/* End carousel */
+
+.item blockquote {
+    border-left: none;
+    margin: 0;
+}
+
+    .item blockquote img {
+        margin-bottom: 10px;
+    }
+
+    .item blockquote p:before {
+        content: "\f10d";
+        font-family: 'Fontawesome';
+        float: left;
+        margin-right: 10px;
+    }
+
+
+
+/**
+  MEDIA QUERIES
+*/
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    #quote-carousel {
+        margin-bottom: 0;
+        padding: 0 40px 30px 40px;
+    }
+}
+
+/* Small devices (tablets, up to 768px) */
+@media (max-width: 768px) {
+
+    /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
+
+    #quote-carousel .carousel-indicators {
+        bottom: -20px !important;
+    }
+
+        #quote-carousel .carousel-indicators li {
+            display: inline-block;
+            margin: 0px 5px;
+            width: 15px;
+            height: 15px;
+        }
+
+            #quote-carousel .carousel-indicators li.active {
+                margin: 0px 5px;
+                width: 20px;
+                height: 20px;
+            }
 }

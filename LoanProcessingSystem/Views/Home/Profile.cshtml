@@ -6,22 +6,22 @@
 
 
 <h2 style="color:#ec8b00;font-size:45px;margin-top:80px;text-align:center;"> Profile </h2>
-<div class="roundcard" style=" height:auto; width:1200px;padding:30px; border-radius:10px;margin-bottom:20px; margin-top:10px; box-shadow: 0px 7px 40px #efefef;">
+<div class="roundcard" style=" height:auto; width:1200px;padding:30px; border-radius:10px;margin-bottom:20px; margin-top:10px; box-shadow: 0px 7px 40px #efefef;  margin-left:30px;">
 
     <div class="container">
         <div class="row profile" style="text-align:center;">
                     <div class="profile-userpic" style="align-items:center;margin-left:43%">
-                        <img src="~/Images/image1.png" class="img-responsive img-rounded" alt=""  style="  width: 20%; height:30%; border-radius:20px;">
+                        <img src="~/Images/Logo.png" class="img-responsive img-rounded" alt=""  style="  width: 10%; height:10%; margin-left:35px;border-radius:20px;">
                     </div><br/><br/><br/>
                     <div class="profile-usertitle">
                         <div class="profile-usertitle-name">
-                            <h4><i class="fa fa-envelope" aria-hidden="true"></i>  @Session["EmailId"]</h4> <br />
-                            <h4><i class="fa fa-user" aria-hidden="true"></i>  @Session["EmailId"]</h4> <br />
+                            <h4><i class="fa fa-envelope" aria-hidden="true"></i> Email :   @Session["EmailId"]</h4> <br />
+                            <h4><i class="fa fa-user" aria-hidden="true"></i> FullName :  @Session["FullName"]</h4> <br />
                         
 
                         </div>
                         <div class="profile-usertitle-job">
-                            @ViewBag.FullName
+                            <h4><i class="fa fa-money" aria-hidden="true"></i> LoanStatus :  @ViewBag.LoanCurrentStatus</h4> <br />
                         </div>
                     </div>
                   

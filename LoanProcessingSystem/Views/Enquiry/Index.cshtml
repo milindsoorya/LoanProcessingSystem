@@ -2,13 +2,49 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+@Styles.Render("~/Content/Adminstyle.css")
+@Html.Partial("Sidemenu")
+<style>
+    h1 {
+        margin-left: 18%;
+        margin-top: 8%;
+        color: #ecb800;
+        margin-bottom: 2%;
+    }
 
-<h2>Index</h2>
+    .table {
+        margin-left: 18%;
+        background: #ccc;
+    }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+
+    tr {
+        background: #dadada;
+    }
+
+    th {
+        width: 800px;
+        color: #fff;
+        background: #555555;
+    }
+
+    td {
+        width: 800px;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    tr:nth-child(even) {
+        background-color: #fff;
+    }
+</style>
+<h1>Customer Enquiries</h1>
+
 <table class="table">
     <tr>
         <th>
@@ -29,29 +65,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PropertyType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Message)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EnquiryId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EnquiryId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EnquiryId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+
+                @*@Html.ActionLink("Details", "Details", new { id = item.EnquiryId }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.EnquiryId })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -2,14 +2,53 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+@Styles.Render("~/Content/Adminstyle.css")
+@Html.Partial("Sidemenu")
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<style>
+    .table {
+        margin-left: 18%;
+        background: #ccc;
+    }
+
+    h1 {
+        font-size: 28px;
+        font-weight: 400;
+        color: #ec8b00;
+    }
+
+    tr {
+        background: #dadada;
+    }
+
+    th {
+        width: 800px;
+        color: #fff;
+        background: #555555;
+    }
+
+    td {
+        width: 800px;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    tr:nth-child(even) {
+        background-color: #fff;
+    }
+</style>
+
+
+<h1 style="margin-left:18%;margin-top:6%;"> Loan Form </h1>
+<a href="#" class="btn btn-primary">Save Report</a>
+
 <table class="table">
+
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -32,9 +71,9 @@
         <th>
             @Html.DisplayNameFor(model => model.DOB)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
@@ -42,46 +81,70 @@
             @Html.DisplayNameFor(model => model.AdminDetail.Name)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Salary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PropertyType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DOB)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdminDetail.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ApplicationId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ApplicationId })
-        </td>
-    </tr>
-}
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ImageUrl)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminDetail.Name)
+            </td>
+            <td>
+
+
+                <a href="@Url.Action("Edit", new { id = item.ApplicationId })" class="btn btn-primary">Add Inspector</a>
+
+                @*<a href="@Url.Action("Delete", new { id = item.ApplicationId })" class="btn btn-danger">Reject Application</a>*@
+
+
+            </td>
+            <td>
+
+
+                @*<a href="@Url.Action("Edit", new { id = item.ApplicationId })" class="btn btn-primary">Add Inspector</a>*@
+
+                <a href="@Url.Action("Delete", new { ApplicationId = item.ApplicationId, item.InspectorId, item.EmailId })" class="btn btn-danger">Reject Application</a>
+
+
+            </td>
+        </tr>
+    }
+
+    @*@RenderPage("~/Views/Enquiry/IndexPartial.cshtml");*@
 
 </table>
+@*<div class="panel panel-body">
+        <div class="col-md-4">
+            <a href="@Url.Action("Index","Enquiry", new { id = 123 })" class="btn btn-warning">View Customer enquiry</a>
+        </div>
+    </div>*@

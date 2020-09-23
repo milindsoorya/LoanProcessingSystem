@@ -67,7 +67,7 @@ namespace LoanProcessingSystem.Controllers.User
 
 
 
-            return RedirectToAction("LogIn", "LoginRegister");
+            return RedirectToAction("LogIn", "RegisterLogin");
 
         }
         [NonAction]
@@ -103,6 +103,7 @@ namespace LoanProcessingSystem.Controllers.User
                         var ticket = new FormsAuthenticationTicket(login.EmailId, login.RememerMe, timeout);
                         string encrypted = FormsAuthentication.Encrypt(ticket);
                         var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
+                        FormsAuthentication.SetAuthCookie(login.EmailId, false);
                         cookie.Expires = DateTime.Now.AddMinutes(timeout);
                         cookie.HttpOnly = true;
                         Response.Cookies.Add(cookie);
@@ -118,12 +119,12 @@ namespace LoanProcessingSystem.Controllers.User
                     }
                     else
                     {
-                        message = "Invalid Credential provided";
+                        message = "Invalid Credentials provided";
                     }
                 }
                 else
                 {
-                    message = "Invalid Credential provided";
+                    message = "Invalid Credentials provided";
                 }
             }
             ViewBag.Message = message;
@@ -140,7 +141,7 @@ namespace LoanProcessingSystem.Controllers.User
         {
             var from = new MailAddress("agrawalsanskriti00@gmail.com", "Santander UK ");
             var to = new MailAddress(EmailId);
-            var frompw = "Sanskriti7691";
+            var frompw = "Sanskriti7691807047";
             string sub = "your account is successfully created";
             string body = "<br/><br/>We are excited to tell you that your account is successfully created on <strong>Santander UK</strong>" +
                        "<br/><br/> Congratulations!!";

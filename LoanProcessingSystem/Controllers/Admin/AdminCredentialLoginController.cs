@@ -15,6 +15,12 @@ namespace LoanProcessingSystem.Controllers.Admin
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult AdminPanel()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult AdminSectionLogIn(AdminLogin adminlogin)
         {
@@ -30,11 +36,12 @@ namespace LoanProcessingSystem.Controllers.Admin
                         if (v.Role == "Manager")
                         {
                             Session["id"] = v.Id;
-                            return RedirectToAction("index", "Home");
+                            return RedirectToAction("AdminPanel", "AdminCredentialLogin");
                         }
                         else if (v.Role == "Inspector")
                         {
-
+                            Session["id"] = v.Id;
+                            return RedirectToAction("InspectorPanel", "Inspector");
                         }
                     }
                     else
@@ -54,10 +61,9 @@ namespace LoanProcessingSystem.Controllers.Admin
         }
         public ActionResult Logout()
         {
-            string Id = (string)Session["Id"];
+            int Id = (int)Session["Id"];
             Session.Abandon();
-            return RedirectToAction("LogIn", "LoginRegister");
+            return RedirectToAction("AdminSectionLogIn", "AdminCredentialLogin");
         }
     }
-
-    }
+}
