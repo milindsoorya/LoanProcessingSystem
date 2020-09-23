@@ -43,26 +43,23 @@
                     @Html.ValidationMessageFor(model => model.AuthorityId, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(model => model.Status, new List<SelectListItem>
+                      {
+                      new SelectListItem { Text ="Manger Approved" , Value="Manger Approved" },
+                      new SelectListItem { Text ="Application in Inspection" , Value="Application in Inspection" },
+                      new SelectListItem { Text ="Approved Request" , Value="Approved Request" },
+                      new SelectListItem { Text ="Rejected Application" , Value="Rejected Application" }
+                       }, "--select Status --", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" style="background-color:#ec8b00;color:#fff;" />
+                    <input type="submit" value="Submit" class="btn btn-default" style="background-color:#ec8b00;color:#fff;" />
                 </div>
             </div>
         </div>

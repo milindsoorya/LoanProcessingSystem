@@ -5,8 +5,8 @@
 
 <style>
     .card{
-        width:800px;
-        height:200px;
+        width:900px;
+        height:250px;
         border-radius:10px;
         margin:200px;
         left:60%;
@@ -39,12 +39,12 @@
 
 
 
-<div class="card" style="background:#f5f5f5;">
+<div class="card">
     <div class="card-header">
        <h1>Hello @Session["EmailId"]</h1>
     </div>
     <div class="card-body">
-        <h5 class="card-title">You have Successfully Submit your Loan Form!!</h5><br/>
+        <h5 class="card-title">You have Successfully Submitted your Application</h5><br/>
         <span><i class="fa fa-check-circle"  aria-hidden="true"></i></span><br/><br/>
         <p class="card-text">
             @Html.ActionLink("Back to Home", "Index", "Home")

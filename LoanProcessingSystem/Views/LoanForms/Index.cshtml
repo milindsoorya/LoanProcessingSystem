@@ -133,7 +133,7 @@
 
                 @*<a href="@Url.Action("Edit", new { id = item.ApplicationId })" class="btn btn-primary">Add Inspector</a>*@
 
-                <a href="@Url.Action("Delete", new { id = item.ApplicationId })" class="btn btn-danger">Reject Application</a>
+                <a href="@Url.Action("Delete", new { ApplicationId = item.ApplicationId, item.InspectorId, item.EmailId })" class="btn btn-danger">Reject Application</a>
 
 
             </td>

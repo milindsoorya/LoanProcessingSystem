@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using LoanProcessingSystem.Models;
@@ -20,6 +21,11 @@ namespace LoanProcessingSystem.Controllers.Admin
             var statusTracks = db.StatusTracks.Include(s => s.AdminDetail).Include(s => s.LoanForm).Include(s => s.UserRegister);
             return View(statusTracks.ToList());
         }
+
+        
+
+
+
 
         // GET: StatusTracks/Details/5
         public ActionResult Details(int? id)
@@ -54,8 +60,11 @@ namespace LoanProcessingSystem.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+             //   var q = db.UserRegisters.Where(a => a.UserId ==)
+                statusTrack.Date = DateTime.Today.Date;
                 db.StatusTracks.Add(statusTrack);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -136,5 +145,44 @@ namespace LoanProcessingSystem.Controllers.Admin
             }
             base.Dispose(disposing);
         }
+        [NonAction]
+        public void SendEmail(string EmailId,int ApplicationId,string Status)
+        {
+            var from = new MailAddress("agrawalsanskriti00@gmail.com", "Santander UK ");
+            var to = new MailAddress(EmailId);
+            var frompw = "Sanskriti7691807047";
+            string sub = "your Application"+ApplicationId+"Status";
+            string body = "<br/><br/>We are excited to tell you that your Application Status is Successfully Updated on <strong>Santander UK</strong>" +
+                       "<br/><br/> Congratulations!!" + "<br><br>Your Application Status is"+Status;
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(from.Address, frompw)
+
+
+            };
+            using (var message = new MailMessage(from, to))
+            {
+                message.Subject = sub;
+                message.Body = body;
+                message.IsBodyHtml = true;
+
+                smtp.Send(message);
+
+            }
+        }
+        //[NonAction]
+        //public string Emailgenerated(string ApplicationId)
+        //{
+        //    var q = db.UserRegisters.Where(a=>a.UserId==)
+
+        //    return Convert.ToString(q).ToString();
+
+
+//        }
     }
 }

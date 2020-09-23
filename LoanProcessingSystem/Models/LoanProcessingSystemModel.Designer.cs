@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\nmenaria\OneDrive - DXC Production\Desktop\LoanProcessingSystem\LoanProcessingSystem\Models\LoanProcessingSystem.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\sagrawal90\Downloads\LoanProcessingSystem (1)\LoanProcessingSystem\LoanProcessingSystem\Models\LoanProcessingSystemModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

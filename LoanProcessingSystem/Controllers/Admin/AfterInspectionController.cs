@@ -9,86 +9,62 @@ using System.Web;
 using System.Web.Mvc;
 using LoanProcessingSystem.Models;
 
-
-namespace LoanProcessingSystem.Controllers
+namespace LoanProcessingSystem.Controllers.Admin
 {
-    public class InspectorController : Controller
+    public class AfterInspectionController : Controller
     {
-        private MortgageDbEntities db = new MortgageDbEntities();
-        // GET: Inspector
+        // GET: AfterInspection
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult InspectorPanel()
-        {
-            return View();
-        }
 
-        public ActionResult InspectorView()
+        public ActionResult AfterInspection()
         {
 
             using (MortgageDbEntities dc = new MortgageDbEntities())
             {
-                int userid = int.Parse(Session["id"].ToString());
-                var v = dc.LoanForms.Where(a => a.InspectorId == userid && a.Status == "Inspector Assigned");
+                
+                var v = dc.LoanForms.Where(a => a.Status == "Inspector Approved");
 
 
-                var loanForms = db.LoanForms.Include(l => l.AdminDetail);
+                var loanForms = dc.LoanForms.Include(l => l.AdminDetail);
                 return View(v.ToList());
             }
 
-
         }
-
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            LoanForm loanForm = db.LoanForms.Find(id);
-            if (loanForm == null)
-            {
-                return HttpNotFound();
-            }
-            return View(loanForm);
-        }
-
-
-  
 
         [HttpPost]
-        public ActionResult ApproveForm(int ApplicationId)
+        public ActionResult ManagerApprove(int ApplicationId)
         {
             using (MortgageDbEntities db = new MortgageDbEntities())
             {
                 //updating status in loanForm
                 var loanform = db.LoanForms.FirstOrDefault(x => x.ApplicationId == ApplicationId);
                 if (loanform == null) throw new Exception("Invalid id: " + ApplicationId);
-                loanform.Status = "Inspector Approved";
+                loanform.Status = "Approved";
                 db.LoanForms.Attach(loanform);
                 var entry = db.Entry(loanform);
                 entry.Property(e => e.Status).IsModified = true;
 
                 //updating status in StatusTrack
                 var status = db.StatusTracks.FirstOrDefault(x => x.ApplicationId == ApplicationId);
-                status.Status = "Inspector Approved";
+                status.Status = "Manager Approved";
                 db.StatusTracks.Attach(status);
                 var statustrackentry = db.Entry(status);
                 statustrackentry.Property(e => e.Status).IsModified = true;
 
                 db.SaveChanges();
-                string mailbody = " < br />< br /> We are very Excited to inform you that your Appliction is Approved in inspection  on<strong> Santander UK </ strong > " +
-                 "<br><br> We will revert back to you later!!";
+                string mailbody = " < br />< br /> We are very Excited to inform you that your Appliction is Approved by Manager on<strong> Santander UK </ strong > " +
+                     "<br><br> We will get back to you later!!";
                 string subjectmail = "your Application is Approved";
                 SendEmail(loanform.EmailId, mailbody, subjectmail);
-                return RedirectToAction("InspectorView");
+                return RedirectToAction("AfterInspection");
             }
         }
 
         [HttpPost]
-        public ActionResult RejectForm(int ApplicationId)
+        public ActionResult ManagerReject(int ApplicationId)
         {
             using (MortgageDbEntities db = new MortgageDbEntities())
             {
@@ -102,28 +78,18 @@ namespace LoanProcessingSystem.Controllers
 
                 //updating status in StatusTrack
                 var status = db.StatusTracks.FirstOrDefault(x => x.ApplicationId == ApplicationId);
-                status.Status = "Inspector Rejected";
+                status.Status = "Manager Rejected";
                 db.StatusTracks.Attach(status);
                 var statustrackentry = db.Entry(status);
                 statustrackentry.Property(e => e.Status).IsModified = true;
 
                 db.SaveChanges();
-                string mailbody = " < br />< br /> We are very Sorry to inform you that your Appliction is Rejected on<strong> Santander UK </ strong > " +
-                   "<br><br> you can try it later!!";
-                string subjectmail = "your Application is Rejected";
+                string mailbody = " < br />< br /> We are very sorry to inform you that your Appliction is rejected on<strong> Santander UK </ strong > " +
+                      "<br><br> You can try again later!!";
+                string subjectmail = "your Application is rejected";
                 SendEmail(loanform.EmailId, mailbody, subjectmail);
-
-                return RedirectToAction("InspectorView");
+                return RedirectToAction("AfterInspection");
             }
-        }
-
-
-
-        public ActionResult Logout()
-        {
-            string Id = (string)Session["Id"];
-            Session.Abandon();
-            return RedirectToAction("LogIn", "RegisterLogin");
         }
         [NonAction]
         public void SendEmail(string EmailId, string mailbody, string subjectmail)

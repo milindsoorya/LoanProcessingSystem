@@ -7,7 +7,7 @@
 
 @Styles.Render("~/Content/Adminstyle.css")
 
-@Html.Partial("sideinspector")
+@Html.Partial("Sidemenu")
 
 
 <style>
@@ -48,7 +48,7 @@
 </style>
 
 
-<h1>Loan Forms Tasks</h1>
+<h1>After Inspection</h1>
 
 <table class="table">
     <tr>
@@ -80,8 +80,7 @@
             @Html.DisplayNameFor(model => model.Status)
         </th>
         <th></th>
-        <th></th>
-        <th></th>
+
     </tr>
 
     @foreach (var item in Model)
@@ -115,35 +114,26 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
 
-
         @*<td>
-            <a href="@Url.Action("InspectorPanel",new { id = item.ApplicationId })" class="btn btn-success">Submit Report</a>
+            <a href="@Url.Action("Create","StausTracks",new { id = item.ApplicationId })" class="btn btn-info">Approve</a>
         </td>*@
-
         <td>
-      
-                <a href="@Url.Action("Details",new { id = item.ApplicationId })" class="btn btn-info">Review Details</a>
-        </td>  
-        <td>
-               @using (Html.BeginForm("RejectForm", "Inspector", new { ApplicationId = item.ApplicationId }, FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    <input type="submit" value="Reject" class="btn btn-danger" />
+            @using (Html.BeginForm("ManagerReject", "AfterInspection", new { ApplicationId = item.ApplicationId }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Reject And Sent Mail" class="btn btn-danger" />
 
-                }
+            }
         </td>
         <td>
-               @using (Html.BeginForm("ApproveForm", "Inspector", new { ApplicationId = item.ApplicationId }, FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    <input type="submit" value="Approve" class="btn btn-success" />
+            @using (Html.BeginForm("ManagerApprove", "AfterInspection", new { ApplicationId = item.ApplicationId }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Approve And Sent Mail" class="btn btn-success" />
 
-                }
-            
+            }
         </td>
     </tr>
-
     }
 
 </table>
-

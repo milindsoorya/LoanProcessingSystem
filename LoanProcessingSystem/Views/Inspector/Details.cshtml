@@ -2,14 +2,48 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+@Styles.Render("~/Content/Adminstyle.css")
+@Html.Partial("Sidemenu")
+
+<style>
+    h2 {
+        margin-left: 28%;
+        margin-top: 8%;
+        color: #ecb800;
+        margin-bottom: 2%;
+    }
+
+    .dl-horizontal {
+        align-content: center;
+        text-align: left;
+        margin-left: 18%;
+    }
+
+    dt {
+        padding: 2px;
+    }
+
+    dd {
+        padding: 2px;
+    }
+</style>
+
+
 
 <div>
-    <h4>LoanForm</h4>
+    <h2>LoanForm Details</h2>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+
+        </dt>
+
+        <dd>
+            <img src="~/Pics/@Html.DisplayFor(model => model.ImageUrl)" alt="Image" style="height:300px; width:300px;" />
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -66,13 +100,7 @@
             @Html.DisplayFor(model => model.DOB)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Status)
@@ -92,7 +120,7 @@
 
     </dl>
 </div>
-<p>
+<p style=" margin-left:30%;">
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.ApplicationId }) |*@
     <a href="@Url.Action("InspectorView", "Inspector")" class="btn btn-primary">Back to List</a>
 </p>

@@ -15,6 +15,7 @@ namespace LoanProcessingSystem.Models
         public string EmailId { get; set; }
         [Display(Name = "Password")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password required")]
+       // [Range(5, 10, ErrorMessage = "Password should contain 5 to 10 length")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [Display(Name = "Designation")]
